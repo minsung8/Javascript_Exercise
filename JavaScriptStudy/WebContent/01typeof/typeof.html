@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트에서 사용되는 데이터 타입에 대해서 알아봅니다.</title>
+
+<style type="text/css">
+	div#container {
+		width: 90%;
+		margin: 0 auto;
+		padding: 2%;
+	}
+	
+	table, tr, th, td {
+		border: solid 1px gray;
+		border-collapse: collapse;
+	}
+	
+	td {
+		width: 200px;
+		height: 50px;
+		text-align: center;
+	}
+</style>
+
+<script type="text/javascript">
+	
+	/*
+		웹페이지 문서가 로드되어진 다음 
+	*/
+	window.onload = function() {
+		
+		// alert("alert는 주로 대화상자를 띄우는 용도");
+		
+		// console.log("console.log 도 결과물을 확인하는데 사용");
+		
+		// document.write("웹페이지에 결과물을 나타내고자 할 때 사용합니다.");
+		
+		var val1 = document.getElementById("val1").innerText;
+		console.log(val1);
+		console.log(typeof(val1)); // 데이터 타입 확인
+		
+		document.getElementById("typeval1").innerText = typeof(Number(val1));
+		
+		var val2 = document.getElementById("val2").innerText;
+		console.log(val2);
+		
+		var val2_1 = document.getElementById("val2").innerHTML;
+		console.log(val2_1);
+		
+		document.getElementById("typeval2").innerHTML = "<span style='color:blue;'>"+typeof(parseInt(val2_1))+"</span>";
+
+		//////////////////////////////////////////////////////////
+		
+		var val3 = document.getElementById("val3").innerText;
+		
+		document.getElementById("typeval3").innerHTML = "<span style='color: red'>" + typeof(parseFloat(val3)) + "</span>";
+		
+		///////////////////////////////////////////////////
+		
+		var var4 = document.getElementById("val4").innerText;
+		
+		document.getElementById("casting4").innerText = parseInt(var4);
+		
+		document.getElementById("typeval4").innerHTML = typeof(parseInt(var4));
+	}
+	it
+</script>
+
+</head>
+<body>
+	
+	<div id="container">
+		<table>
+		
+			<tr>
+				<th>데이터 값</th>
+				<th>형변환 후 데이터 값</th>
+				<th>데이터 타입</th>
+			</tr>
+			
+			<tr>
+				<td id="val1">1234</td>
+				<td></td>
+				<td id="typeval1"></td>
+			</tr>
+				
+			<tr>
+				<td id="val2"><span style="color: blue;">1234</span></td>
+				<td>parseInt(1234) => </td>
+				<td id="typeval2"></td>
+			</tr>
+			
+			<tr>
+				<td id="val3"><span style="color: red;">1234.567</span></td>
+				<td>parseFloat(1234.567) => </td>
+				<td id="typeval3"></td>
+			</tr>
+			
+			<tr>
+				<td id="val4">1234.567</td>
+				<td>parseFloat(1234.567) => <span id="casting4"></span></td>
+				<td id="typeval4"></td>
+			</tr>
+			
+		</table>
+	</div>
+
+</body>
+</html>
