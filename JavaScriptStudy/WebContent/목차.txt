@@ -1,0 +1,19 @@
+01typeof
+	- typeof.html
+		- console.log
+		- document.write
+		- getElementById().innerText
+		- getElementById().innerHTML
+
+02getElement
+	- getElement.html
+		- document.getElementsByTagName()
+		- document.getElementsByClassName()
+		- document.getElementsByName()
+		- document.getElementById()
+		- Event handler
+		
+03javascriptStandardObject
+	- 01Array
+		-01push_pop_splice_reverse_sort_slice_indexOf_forEach.html
+			- 배열선언, 배열.push

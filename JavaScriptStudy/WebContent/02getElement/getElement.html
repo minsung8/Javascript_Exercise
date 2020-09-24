@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+</style>
+
+<script type="text/javascript">
+	window.onload = function() {
+		/*
+			JS에서 태그를 가지고 선택지를 잡는 방법
+				document.getElementsByTagName("태그명"); 이다
+				document.getElementsByTagName("태그명"); 을 실행하면 return type은 객체(Object)배열
+		*/
+		
+		var arrDiv = document.getElementsByTagName("div");
+			
+		// alert("배열 arrDiv의 길이 : " + arrDiv.length);
+		
+		for (var i=0; i<arrDiv.length; i++) {
+			arrDiv[i].style.width = "400px";
+			arrDiv[i].style.height = "200px";
+			arrDiv[i].style.border = "solid 1px gray";
+			arrDiv[i].style.margin = "20px";
+			arrDiv[i].style.backgroundColor = arrDiv[i].innerText;
+			arrDiv[i].style.color = "white";
+		}
+		
+	/*
+		JS에서 클래스명을 가지고 선택지를 잡는 방법
+			document.getElementsByClassName("클래스명"); 이다
+			document.getElementsByClassName("클래스명"); 을 실행하면 return type은 객체(Object)배열
+	*/
+	
+	var arrBtn = document.getElementsByClassName("btn");
+			
+		for (var i=0; i<arrBtn.length; i++){
+			
+			arrBtn[i].style.backgroundColor ="navy";
+			// arrBtn[i].style.color ="white";
+		}
+	 
+	
+	/*
+	JS에서 name을 가지고 선택지를 잡는 방법
+		document.getElementsByName("name 값"); 이다
+		document.getElementsByName("name 값"); 을 실행하면 return type은 객체(Object)배열	
+	*/
+		var arrHobby = document.getElementsByName("hobby");
+		
+		for (var i=0; i<arrHobby.length; i++){
+			console.log(arrHobby[i].value);
+		}
+		
+		var arrTag = document.getElementsByTagName("label");
+		
+		for (var i=0; i<arrTag.length; i++){
+			arrTag[i].style.color ="red";
+		}
+		
+	/*
+	JS에서 id 값을 가지고 선택지를 잡는 방법
+		document.getElementById("id 값"); 이다
+		document.getElementById("id 값"); 을 실행하면 return type은 객체(Object)배열	
+	*/
+	
+		// 이벤트 핸들러 생성
+		var btnOK = document.getElementById("btnOK");
+		
+		btnOK.onclick = function() {
+			
+			alert("확인버튼을 클릭하셨군요");
+		}
+		
+		var btnChkbox = document.getElementById("btnChkbox");
+		btnChkbox.addEventListener("click", function(){
+			var arrHobby = document.getElementsByName("hobby");
+			var answer = "";
+			for (var i=0; i<arrHobby.length; i++){
+				// console.log(arrHobby[i].value + "=>" + arrHobby[i].checked);
+				if (arrHobby[i].checked == true) {
+					if (answer.length > 0) {
+						answer += "," + arrHobby[i].value;
+					} else {
+						answer += arrHobby[i].value;
+					}
+				}
+			}
+			document.getElementById("result").innerHTML = answer;
+			
+		});
+
+	}
+		
+</script>
+
+</head>
+<body>
+
+	<div>red</div>
+	<div>green</div>
+	<div>blue</div>
+	
+	<div>
+		<button type="button" class="btn">버튼1</button>
+		<button type="button">버튼2</button>
+		<button type="button" class="btn">버튼3</button>
+		<button type="button">버튼4</button>
+		<button type="button" class="btn">버튼5</button>
+		<button type="button">버튼6</button>
+	</div>
+	
+	<div>
+		<ul style="list-style-type: none;">		
+			<li><label for="hobby1">게임</label><input type="checkbox" id="hobby1" name="hobby" value="game"/></li>
+			<li><label for="hobby2">영화감상</label><input type="checkbox" id="hobby2" name="hobby" value="movie"/></li>
+			<li><label for="hobby3">글쓰기</label><input type="checkbox" id="hobby3" name="hobby" value="writing"/></li>
+			<li><label for="hobby4">음악감상</label><input type="checkbox" id="hobby4" name="hobby" value="music"/></li>
+		</ul>
+		
+		<button type="button" id="btnOK">확인</botton>
+		<button type="button" id="btnChkbox">체크박스의 체크된 것 알아오기</botton>
+		<br/>
+		
+		체크박스에 체크가 되어진 값 : <span id="result"></span>
+	</div>
+
+</body>
+</html>

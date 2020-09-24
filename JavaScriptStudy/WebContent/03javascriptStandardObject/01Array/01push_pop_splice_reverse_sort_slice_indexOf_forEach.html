@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+   body {
+      padding: 20px;
+   }
+   
+   div.display {
+      display: inline-block;
+      border: solid 1px gray;
+      width: 15%;
+      margin: 10px;	
+   }
+</style>
+
+<script type="text/javascript">
+	window.onload = function() {
+		
+		var arrFruit1 = new Array();
+		arrFruit1.push("사과");		// push : 배열에 요소를 추가한  후 추가된 배열의 길이 반환
+		arrFruit1.push("딸기");
+		arrFruit1.push("메론");
+		arrFruit1.push("참외");
+		var arrFruit1_length = arrFruit1.push("수박");
+		
+		console.log(arrFruit1_length);
+		console.log(arrFruit1.length);
+
+
+	}
+</script>
+
+</head>
+<body>
+	<h2>내가 좋아하는 과일</h2>
+	<div class="display" id="fruitDisplay1"></div>
+	<div class="display" id="fruitDisplay2"></div>
+</body>
+</html>

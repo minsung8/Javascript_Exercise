@@ -63,8 +63,162 @@
 		document.getElementById("casting4").innerText = parseInt(var4);
 		
 		document.getElementById("typeval4").innerHTML = typeof(parseInt(var4));
+		
+		/////////////////////////////////////////////////////
+		
+		var var5 = document.getElementById("val5").innerText;
+		
+		document.getElementById("typeval5").innerHTML = "<span style='color:green'>" + typeof( Number(var5) ) + "</span>";
+	
+		/////////////////////////////////////////////////////
+		
+		var var6 = document.getElementById("val6").innerText;
+		
+		document.getElementById("casting6").innerHTML = Number(val6);
+		
+		document.getElementById("typeval6").innerHTML = typeof(Number(var6));
+		
+		/////////////////////////////////////////////////////////
+		
+		var var7 = document.getElementById("val7").innerText;
+
+		document.getElementById("typeval7").innerHTML = typeof(val7);
+		
+		/////////////////////////////////////////////////////////
+		
+		var n1 = document.getElementById("val8").innerText;
+		var n2 = document.getElementById("val9").innerText;
+		
+		document.getElementById("sum").innerHTML = Number(n1) + Number(n1);
+		document.getElementById("typeval8").innerHTML = typeof(Number(n1) + Number(n2));
+		
+		////////////////////////////////////////////////////////////
+		
+		var val8 = document.getElementById("val8").innerText;
+		var val9 = document.getElementById("val9").innerText;
+		var val10 = document.getElementById("val10").innerText;
+		
+		var bool;
+		
+		if (val9 == val10) {
+			bool = true;
+		} else {
+			bool = false;
+		}
+		
+		document.getElementById("result10").innerText = bool;
+		document.getElementById("typeval10").innerText = typeof(bool);
+		
+		////////////////////////////////////////////////////////////////
+		
+		var bool2;
+		
+		if (Number(val8) == Number(val10)) {
+			bool2 = true;
+		} else {
+			bool2 = false;
+		}
+		
+		document.getElementById("result11").innerText = bool2;
+		document.getElementById("typeval11").innerText = typeof(bool2);
+		
+		//////////////////////////////////////////////////////////////////
+		
+		var val12;
+		
+		document.getElementById("typaval12").innerHTML = typeof(val12);
+		
+		///////////////////////////////////////////////////////////////////
+		
+		var person1 = {};	//	{} 이 자바스크립트에서 말하는 객체
+		person1.userid = "leess";
+		person1.pwd = "qwer1234";
+		person1["name"] = "이순신";
+		person1.age = 25;
+		
+		document.getElementById("typeval13").innerHTML = typeof(person1);
+		
+		////////////////////////////////////////////////////////////////////
+		
+		document.getElementById("val14").innerHTML = person1.userid;
+		document.getElementById("typeval14").innerHTML = typeof(person1.userid);
+
+		document.getElementById("val15").innerHTML = person1.pwd;
+		document.getElementById("typeval15").innerHTML = typeof(person1.pwd);
+		
+		document.getElementById("val16").innerHTML = person1.name;
+		document.getElementById("typeval16").innerHTML = typeof(person1.name);
+		
+		document.getElementById("val17").innerHTML = person1.age;
+		document.getElementById("typeval17").innerHTML = typeof(person1.age);
+		
+		///////////////////////////////////////////////////////////////////////
+		
+		var person2 = {userid:"eomjh", pwd:"qwer1234", name:"엄정화", age:17};	//	{} 이 자바스크립트에서 말하는 객체
+		
+		document.getElementById("typeval18").innerHTML = typeof(person2);
+		
+		////////////////////////////////////////////////////////////////////
+		
+		document.getElementById("val19").innerHTML = person2.userid;
+		document.getElementById("typeval19").innerHTML = typeof(person2.userid);
+
+		document.getElementById("val20").innerHTML = person2.pwd;
+		document.getElementById("typeval20").innerHTML = typeof(person2.pwd);
+		
+		document.getElementById("val21").innerHTML = person2.name;
+		document.getElementById("typeval21").innerHTML = typeof(person2.name);
+		
+		document.getElementById("val22").innerHTML = person2.age;
+		document.getElementById("typeval22").innerHTML = typeof(person2.age);
+				
+		
+		var val23 = document.getElementById("val23").innerHTML;
+		var val24 = document.getElementById("val24").innerHTML;
+		
+		document.getElementById("result25").innerHTML = func_sum(val23, val24);
+		
+		///////////////////////////////////////////////////
+		
+		// JS는 함수도 변수에 넣을 수 있다.
+		
+		var func_minus = function func_minus(n1, n2) {
+			
+			if (typeof(n1) == "string"){
+				n1 = Number(n1);
+			}
+			
+			if (typeof(n2) == "string"){
+				n2 = Number(n2);
+			}
+			
+			return n1 - n2;
+		};
+		
+		var val25 = document.getElementById("val25").innerHTML;
+		var val26 = document.getElementById("val26").innerHTML;
+		
+		document.getElementById("typeval27").innerHTML = typeof(func_minus);
+		document.getElementById("result27").innerHTML = func_minus(val25, val26);
+
+		
+		
+		
 	}
-	it
+	
+function func_sum(n1, n2) {
+		
+		if (typeof(n1) == "string"){
+			n1 = Number(n1);
+		}
+		
+		if (typeof(n2) == "string"){
+			n2 = Number(n2);
+		}
+		
+		return n1 + n2;
+}
+	
 </script>
 
 </head>
@@ -103,8 +257,122 @@
 				<td id="typeval4"></td>
 			</tr>
 			
+			<tr>
+				<td id="val5">1234</td>
+				<td>Number(1234) =></td>
+				<td id="typeval5"></td>
+			</tr>
+			
+			<tr>
+				<td id="val6">1234.567</td>
+				<td>parseFloat(1234.567) => <span id="casting6" style="color: blue"></span></td>
+				<td id="typeval6"></td>
+			</tr>
+			
+			<tr>
+				<td id="val7" colspan="2">안녕하세요</td>
+				<td id="typeval7"></td>
+			</tr>
+			
+			<tr>
+				<td id="val8">20</td>
+				<td id="val9">30</td>
+				<td>20+30=<span id="sum"></span>&nbsp;&nbsp;<span id="typeval8"></span></td>
+			</tr>
+			
+			<tr>
+				<td id="val10">30</td>
+				<td>30은 30과 같다 <span id="result10"></span></td>
+				<td><span id="typeval10"></span></td>
+			</tr>
+			
+			<tr>
+				<td id="val11">30</td>
+				<td>20 > 30 <span id="result11"></span></td>
+				<td><span id="typeval11"></span></td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">변수에 값을 넣지 않은 경우</td>
+				<td id="typaval12"></td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">var person1 = {};</td>
+				<td id="typeval13"></td>
+			</tr>
+			
+			<tr>
+				<td>person1.userid</td>
+				<td id="val14"></td>
+				<td id="typeval14"></td>
+			</tr>
+			
+			<tr>
+				<td>person1.pwd</td>
+				<td id="val15"></td>
+				<td id="typeval15"></td>
+			</tr>
+
+			<tr>
+				<td>person1.name</td>
+				<td id="val16"></td>
+				<td id="typeval16"></td>
+			</tr>
+
+			<tr>
+				<td>person1.age</td>
+				<td id="val17"></td>
+				<td id="typeval17"></td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">var person2 = {};</td>
+				<td id="typeval18"></td>
+			</tr>
+			
+			<tr>
+				<td>person2.userid</td>
+				<td id="val19"></td>
+				<td id="typeval19"></td>
+			</tr>
+			
+			<tr>
+				<td>person2.pwd</td>
+				<td id="val20"></td>
+				<td id="typeval20"></td>
+			</tr>
+
+			<tr>
+				<td>person2.name</td>
+				<td id="val21"></td>
+				<td id="typeval21"></td>
+			</tr>
+
+			<tr>
+				<td>person2.age</td>
+				<td id="val22"></td>
+				<td id="typeval22"></td>
+			</tr>
+			
+			<tr>
+				<td id="val23">40</td>
+				<td id="val24">50</td>
+				<td>func_sum('40', '50')을 호출한 결과 <span id="result25"></span></td>
+			</tr>
+			
+			<tr>
+				<td id="val25">90</td>
+				<td id="val26">70</td>
+				<td><span id="result27"></span>&nbsp;&nbsp;변수 func_minus의 타입<span id="typeval27"></span></td>
+			</tr>
+			
 		</table>
 	</div>
 
 </body>
 </html>
+
+
+
+
