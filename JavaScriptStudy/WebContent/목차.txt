@@ -17,3 +17,15 @@
 	- 01Array
 		-01push_pop_splice_reverse_sort_slice_indexOf_forEach.html
 			- 배열선언, 배열.push
+			
+		-02_split_join.html
+			- 중복된 요소 제거(for문), 초기화
+			
+		-02_split_join2.html
+			- 중복된 요소 제거(forEach, some), 초기화
+ 
+		-03객체배열.html
+			- click으로 배열에서 값을 불러와 html 작성 후 mapping
+			
+		-04selectedIndex.html
+			- select로 배열에서 값을 불러와 html 작성 후 mapping
