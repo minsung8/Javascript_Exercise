@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트 배열</title>
+
+<style type="text/css">
+
+	div#container {
+		border: solid 1px gray;
+		width: 90%;
+		margin: 0 auto;
+		padding: 2%;
+	}
+	
+	input[type=text] {			/* input 태그 중 type이 text인 엘리먼트를 말한다. */
+		width: 400px;
+		height: 50px;
+		font-size: 20pt;
+		
+	}	
+	
+	input[type=button] {
+		width: 100px;
+		height: 30px;
+		font-size: 12pt;
+		background-color: black;
+		color: white;
+		border: none;
+	}
+
+	
+</style>
+
+<script type="text/javascript">
+
+	window.onload = function() {
+		
+		var btnOK = document.getElementById("btnOK");
+		btnOK.addEventListener("click", function() {
+			
+			var sduplicateVal = document.getElementById("duplicate").value;
+			
+			// console.log(sduplicateVal);
+			
+			var arrDuplicateVal = sduplicateVal.split(",");
+			
+			var bFlag = false;
+			var arrResult = [];
+			for (var i=0; i<arrDuplicateVal.length; i++){
+				
+				for (var j=i+1; j<arrDuplicateVal.length; j++){
+					if (arrDuplicateVal[i] == arrDuplicateVal[j]) {
+						bFlag = true;
+						break;
+					}
+				}
+				
+				if (!bFlag) {
+					arrResult.push(arrDuplicateVal[i]);
+				}
+				
+				bFlag = false;
+			}
+			
+			var sResult = arrResult.join(",");		
+			
+			document.getElementById("result").value = sResult;
+			
+		});
+		
+		var btnClear = document.getElementById("btnClear");
+		btnClear.addEventListener("click", function() {
+			document.getElementById("result").value = "";
+		})
+	}
+	
+</script>
+
+</head>
+<body>
+
+	<div id="container">
+      <table>
+          <tr>
+             <td colspan="2" style="font-size: 16pt; text-align: center;" >중복된 요소값 제거하기-1</td>
+          </tr>
+         <tr>
+            <td><input type="text" id="duplicate" value="10,1,2,3,4,5,2,6,7,2,3,4,5,6,9" /></td> 
+            <td><input type="button" id="btnOK" value="확인"/></td>
+         </tr>
+         <tr>
+            <td><input type="text" id="result" /></td>
+            <td><input type="button" id="btnClear" value="다시" /></td>
+         </tr>
+      </table>
+   </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
