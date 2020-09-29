@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+</style>
+
+<script type="text/javascript">
+	
+	window.onload = function() {
+		
+		var n1 = document.getElementById("n1").innerText;
+		var s1 = n1.replaceAll(",","");
+		var n2 = document.getElementById("n2").innerText;
+		var s2 = n2.replaceAll(",","");
+		
+		var answer = (parseInt(s1) + parseInt(s2)).toLocaleString("en");		// toLocaleString => 세자리수 콤마
+		document.getElementById("answer").innerText = answer;
+
+	}
+	
+</script>
+
+
+</head>
+<body>
+
+	<div id="container">
+		<span id="n1">50,000</span>원 + <span id="n2">1,000,000</span>원 = <span id="answer"></span>원
+	</div>
+	
+</body>
+</html>

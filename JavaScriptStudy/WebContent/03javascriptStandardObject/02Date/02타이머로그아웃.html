@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+	div#container {
+		width: 90%;
+		margin: 0 auto;
+		padding: 2%;
+	}
+	
+	table, tr, td{
+		border: solid 1px gray;
+		border-collapse: collapse;
+	}
+	
+	td {
+		width: 200px;
+		height: 50px;
+		text-align: center;
+	}
+
+</style>
+
+<script type="text/javascript">
+	
+	var clock;
+	var start = 0; // 허용시간값
+	var cnt = 0;	// 증가치
+
+	window.onload = function() {
+		
+		func_loopTimer();
+		
+		var btnDelay = document.getElementById("btnDelay");
+		btnDelay.addEventListener('click', function() {
+			if (start >= 0){
+				cnt = 0;
+				clearTimeout(clock);
+				func_loopTimer();	
+			} else {
+				alert("로그아웃 이후에는 연장이 불가합니다.")
+			}
+		});
+		
+	}
+	
+	function func_timer(i) {
+		start = 1*60 - i;
+				
+		if (start >= 0) {
+ 			
+			var min = "";
+			
+			if (start < 600) {
+				min = "0";
+			}
+			
+			min += parseInt(start/60);
+			
+			var second = start%60;
+			
+			second = (second < 10)?"0"+second:second;
+			
+			document.getElementById("timer").innerHTML = min + ":" + second;
+			
+		} else {
+			alert("시간종료로 로그아웃 되었습니다");
+			clearTimeout(clock);				// setTimeout 종료
+			return;
+		}
+	}
+	
+	function func_loopTimer() {
+		func_timer(cnt++);
+		
+		if (start >= 0) {
+			clock = setTimeout('func_loopTimer()', 1000);
+		}
+		
+
+	}
+	
+	function func_Finish() {
+		alert("강제 종료합니다");
+		clearTimeout(clock);
+		// setTimeout 메서드에서 지정한 일정한 밀리초값 시간 이후에 실행할 표현식 javascriptCode나 기능함수 functionName을 호출하는 것을 중단한다.
+        // 파라미터 clock 은 중단해야할 setTimeout 함수를 가리키는 것임.
+	}
+	
+	
+</script>
+
+</head>
+<body>
+
+	<div id="container">
+		<table>
+			<tr>
+				<td>남은시간</td>
+				<td>
+					<span id="timer"></span>
+					<button type="button" id="btnDelay">연장</button>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>강제종료</td>
+				<td>
+					<button id="button" onclick="func_Finish()">종료</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+</body>
+</html>	
