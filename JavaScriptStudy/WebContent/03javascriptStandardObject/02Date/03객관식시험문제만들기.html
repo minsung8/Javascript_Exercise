@@ -7,7 +7,6 @@
 <style type="text/css">
 
 	div#time {
-		border: solid 1px red;
 		width: 80%;
 		margin-left: 100px;
 		margin-bottom: 30px;
@@ -15,51 +14,125 @@
 	
 
 	div#problem {
-		border: solid 1px red;
 		width: 80%;
 		margin-bottom: 30px;
 		margin-left: 100px;
 	}
 	
 	div#show {
-		border: solid 1px red;
 		margin-left: 20px;
 	}
+	
+	span {
+		margin-top: 10px;
+		margin-left: 20px;
+	}
+	
+
 </style>
+
+<script type="text/javascript">
+	var clock;
+	var start = 0; // 허용시간값
+	var cnt = 0;	// 증가치
+	
+	window.onload = function() {
+		
+		func_loopTimer();
+		
+		
+	}
+	
+	function func_timer(i) {
+		start = 5*60 - i;
+				
+		if (start >= 0) {
+				
+			var min = "";
+			
+			if (start < 600) {
+				min = "0";
+			}
+			
+			min += parseInt(start/60);
+			
+			var second = start%60;
+			
+			second = (second < 10)?"0"+second:second;
+			
+			document.getElementById("timer").innerHTML = min + ":" + second;
+			
+		} else {
+			alert("시간종료로 로그아웃 되었습니다");
+			clearTimeout(clock);				// setTimeout 종료
+			return;
+		}
+	}
+	
+	function func_loopTimer() {
+		func_timer(cnt++);
+		
+		if (start >= 0) {
+			clock = setTimeout('func_loopTimer()', 1000);
+		}
+		
+	
+	}
+	
+	function func_Finish() {
+		alert("강제 종료합니다");
+		clearTimeout(clock);
+		// setTimeout 메서드에서 지정한 일정한 밀리초값 시간 이후에 실행할 표현식 javascriptCode나 기능함수 functionName을 호출하는 것을 중단한다.
+	    // 파라미터 clock 은 중단해야할 setTimeout 함수를 가리키는 것임.
+	}
+</script>
 </head>
 <body>
 
-	<div id="time">남은 시간</div>
+	<div id="time">
+		<table>
+			<tr>
+				<td style="font-size: 20px; font-weight: bold;">남은시간 : </td>
+				<td>
+					<span id="timer" style="color: blue; font-size: 30px; font-weight: bold;"></span>
+				</td>
+			</tr>
+		</table> 
+	</div>
 	
 	<div id="container">
-		
+	
 		<div id="problem">
-			<h2>문제1</h2>
-			<div id="show">
-				<h3>1. test</h3>
-				<h3>1. test</h3>
-				<h3>1. test</h3>
-			</div>
+			<div>[문제1] 다음중 사람의 혈액형이 아닌것은 ?</div>
+			<span style="display: block;"><label for="male">1. A</label><input type="radio" name="gender" id="male" value="1" checked/></span>
+			<span style="display: block;"><label for="male">2. B</label><input type="radio" name="gender" id="male" value="1" checked/></span>
+			<span style="display: block;"><label for="male">3. C</label><input type="radio" name="gender" id="male" value="1" checked/></span>
+			<span style="display: block;"><label for="male">4. D</label><input type="radio" name="gender" id="male" value="1" checked/></span>
 		</div>
 		
 		<div id="problem">
-			<h2>문제1</h2>
-			<div id="show">
-				<h3>1. test</h3>
-				<h3>1. test</h3>
-				<h3>1. test</h3>
-			</div>
+			<div>[문제2] 다음중 서로간의 공통점이 없는 것은?</div>
+			<span style="display: block;"><label for="male">1. 신발</label><input type="radio" name="gender" id="male" value="1" checked/></span>
+			<span style="display: block;"><label for="male">2. 수박</label><input type="radio" name="gender" id="male" value="1" checked/></span>
+			<span style="display: block;"><label for="male">3. 라면</label><input type="radio" name="gender" id="male" value="1" checked/></span>
+			<span style="display: block;"><label for="male">4. 상추</label><input type="radio" name="gender" id="male" value="1" checked/></span>
 		</div>
 		
 		<div id="problem">
-			<h2>문제1</h2>
-			<div id="show">
-				<h3>1. test</h3>
-				<h3>1. test</h3>
-				<h3>1. test</h3>
-			</div>
+			<div>[문제3] 다음중 철자가 맞는것은?</div>
+			<span style="display: block;"><label for="male">1. comfuter</label><input type="radio" name="gender" id="male" value="1" checked/></span>
+			<span style="display: block;"><label for="male">2. muose</label><input type="radio" name="gender" id="male" value="1" checked/></span>
+			<span style="display: block;"><label for="male">3. keyboad</label><input type="radio" name="gender" id="male" value="1" checked/></span>
+			<span style="display: block;"><label for="male">4. browser</label><input type="radio" name="gender" id="male" value="1" checked/></span>
 		</div>
-
+		
+		<div id="problem">
+			<div>[문제4] 다음중 틀린것은?</div>
+			<span style="display: block;"><label for="male">1. 10+2=12</label><input type="radio" name="gender" id="male" value="1" checked/></span>
+			<span style="display: block;"><label for="male">2. 10-2*0=0</label><input type="radio" name="gender" id="male" value="1" checked/></span>
+			<span style="display: block;"><label for="male">3. 2-1+2=0</label><input type="radio" name="gender" id="male" value="1" checked/></span>
+			<span style="display: block;"><label for="male">4. 4/2=2</label><input type="radio" name="gender" id="male" value="1" checked/></span>
+		</div>
 
 	
 	</div>

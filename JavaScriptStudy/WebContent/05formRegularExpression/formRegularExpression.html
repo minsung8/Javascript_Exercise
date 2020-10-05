@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트 정규표현식 폼 유효성 검사</title>
+
+<style type="text/css">
+	
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: Arial, "MS Trebuchet", sans-serif;
+		word-break: break-all;
+}
+	
+	#container {
+		width: 80%;
+		margin: 0 aute;
+}
+	
+	legend {
+		font-size: 20px;
+}
+	
+	ul {
+		life-style-type: none;
+		padding: 0;
+	}
+
+	ul > li {
+		line-height: 40px;
+	}
+	
+	label.title{
+		display: inline-block;
+		width: 100px;
+		color: navy;
+		font-weight: bold;
+	}
+	
+	input.myinput{
+		height: 20px;	
+	}
+	
+	select {
+		width: 150px;
+	}
+	
+	select.myselect{
+		height: 25px;
+	}
+	
+	input.btn {
+		width: 100px;
+		height: 40px;
+		background-color: #000;
+		color: #fff;
+		font-size: 16pt;
+		border: none;
+		margin: 20px 0 0 40px;
+	}
+	
+</style>
+
+<script type="text/javascript">
+
+	window.onload = function() {
+		
+		var now = new Date();
+		var currentYear = now.getFullYear();
+		
+		var sOption = "<option>출생년도</option>"
+		for (var i=0; i<(currentYear-1950)+1; i++){
+			sOption += "<option>"+ (1950 + i) +"</option>";
+		}
+		
+		document.getElementById("birthYear").innerHTML = sOption;
+		document.getElementById("birthYear2").innerHTML = sOption;
+		
+		var select = document.getElementById("birthYear");
+		
+		var year = 0;
+		select.addEventListener("change", function() {
+			year = Number(this.value);
+			
+			if (isNaN(year)) {
+				alert("태어나신 년도를 선택하세요");
+				document.getElementById("age").innerHTML = "";
+			} else {
+				var answer = parseInt(currentYear) - parseInt(year) + 1;
+				document.getElementById("age").innerHTML = answer;
+			}
+		})
+	}
+	
+	function goAge(select) {
+		var now = new Date();
+		var year = 0;
+		var currentYear = now.getFullYear();
+		year = Number(select.value);
+		
+		if (isNaN(year)) {
+			alert("태어나신 년도를 선택하세요");
+			document.getElementById("age").innerHTML = "";
+		} else {
+			var answer = parseInt(currentYear) - parseInt(year) + 1;
+			document.getElementById("age").innerHTML = answer;
+		}
+	}
+</script>
+
+</head>
+
+<body>
+	<div id="container">
+		
+		<form action="register.do">
+			
+		<fieldset>
+			<legend>회원가입 정보</legend>
+				
+			<ul style="list-style-type: none">
+				<li>
+					<label for="userid" class="title">아이디</label>
+					<input type="text" id="userid" class="myinput" size="20" maxlength="20" autofocus required/>
+				</li>
+				<li>
+					<label for="passwd1" class="title">암호</label>
+					<input type="password" id="passwd1" class="myinput" size="20" maxlength="20" autofocus required/>
+				</li>
+				<li>
+					<label for="passwd2" class="title">암호확인</label>
+					<input type="password" id="passwd2" class="myinput" size="20" maxlength="20" autofocus required/>
+				</li>
+				<li>
+					<label for="name" class="title">성명</label>
+					<input type="text" id="name" class="myinput" size="20" maxlength="20" autofocus required/>
+				</li>
+				<li>
+					<label for="email" class="title">이메일</label>
+					<input type="email" id="email" class="myinput" size="20" maxlength="40" autofocus required placeholder="예: abc@naver.com" />
+				</li>
+				<li>
+					<label class="title">성별</label>
+					<label for="male">남자</label>
+					<input type="radio" name="gender" id="male" value="1" checked/>
+					<label for="female">여자</label>
+					<input type="radio" name="gender" id="female" value="2"/>
+				</li>
+				<li>
+					<label class="title">취미</label>
+					<label for="hobby1">게임</label><input type="checkbox" name="hobby" id="hobby1" value="1"/>&nbsp;&nbsp;
+					<label for="hobby2">영화감상</label><input type="checkbox" name="hobby" id="hobby2" value="2"/>&nbsp;&nbsp;
+					<label for="hobby3">글쓰기</label><input type="checkbox" name="hobby" id="hobby3" value="3"/>&nbsp;&nbsp;
+					<label for="hobby4">음악감상</label><input type="checkbox" name="hobby" id="hobby4" value="4"/>&nbsp;&nbsp;
+				</li>
+				
+				<li>
+					<label class="title">출생년도</label>
+					<select class="myselect" name="birthYear" id="birthYear"></select>
+					<select class="myselect" name="birthYear" id="birthYear2" onchange="goAge(this)"></select>
+				</li>
+				
+				<li>
+					<label class="title">현재나이</label>
+					<span style="font-size: 12pt; color: red;" id="age"></span>세
+				</li>
+				
+				<li>
+					<label class="title">최종학력</label>
+					<select class="myselect">
+						<option value="1">고졸</option>
+						<option value="2" selected>초대졸</option>
+						<option value="3">대졸</option>
+						<option value="4">대학원졸</option> 
+					</select>
+				</li>
+				
+				<li>
+					<label for="addFile" class="title">파일첨부</label>
+					<input type="file" id="addFile"/>
+				</li>
+				<li>
+					<label for="registerComment" class="title">가입인사</label>
+					<textarea rows="5" cols="30" id="registerComment"></textarea>
+				</li>
+				<li>
+					<input type="submit" class="btn" value="확인"/>
+					<input type="reset" class="btn" value="취소"/>		
+				</li>
+			</ul>
+			</fieldset>	
+		</form>
+		
+	</div>
+</body>
+
+</html>

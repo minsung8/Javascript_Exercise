@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문자열을 유효한 URI(Uniform Resource Identifier UTF-8로 인코딩)로 인코딩</title>
+
+<style type="text/css">
+
+	div#container {
+		width: 90%;
+		margin: 0 auto;
+		padding: 2%;
+	}
+	
+	table, tr, td {
+		border: solid 1px gray;
+		border-collapse: collapse;
+	}
+	
+	td {
+		width: 200px;
+		height: 50px;
+		text-align: center;
+	}
+
+</style>
+
+<script type="text/javascript">
+	window.onload = function(){
+		
+		document.getElementById("inputText").focus();
+		var btnOk = document.getElementById("btnOk");
+		btnOk.addEventListener("click", function() {
+			
+			var inputText = document.getElementById("inputText").value;
+			var encodeVal = encodeURI(inputText);
+			
+			document.getElementById("encode").innerHTML = encodeVal;				
+			document.getElementById("decode").innerHTML = decodeURI(encodeVal);
+			
+		});
+		
+		var btnReset = document.getElementById("btnReset");
+		btnReset.addEventListener("click", function() {
+			
+			document.getElementById("encode").innerHTML = "";				
+			document.getElementById("decode").innerHTML = "";
+			document.getElementById("inputText").value = "";
+			document.getElementById("inputText").focus();
+			
+		});
+	}
+</script>
+
+</head>
+<body>
+	
+	<div id="container">
+		<table>
+		
+			<tr>
+				<td>문자열입력</td>
+				<td><input type="text" id="inputText"/></td>
+			</tr>
+			<tr>
+				<td>URI로 인코딩된 값</td>
+				<td id="encode"></td>
+			</tr>
+			<tr>
+				<td>URI를 디코딩된 값</td>
+				<td id="decode"></td>
+			</tr>
+			
+			<tr>
+				<td><button type="button" id="btnOk">변경</button></td>
+				<td><button type="button" id="btnReset">다시</button></td>
+			</tr>
+		</table>
+	</div>
+	
+</body>
+</html>
