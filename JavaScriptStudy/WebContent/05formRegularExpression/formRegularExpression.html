@@ -107,6 +107,114 @@
 			document.getElementById("age").innerHTML = answer;
 		}
 	}
+	
+	function goSubmit() {
+		
+		var form = document.registerForm;	// 문서에서 name의 값이 registerForm인 태그(=object)
+		var useridVal = form.userid.value					// 해당 form에 userid라는 name인 곳의 value 값을 가져온다
+		if (useridVal.trim().length == 0){
+			alert("아이디는 필수입력사항입니다! 아이디를 입력하세요");
+			form.userid.value = "";
+			form.userid.focus();
+			return;
+		}
+		/* ------------------------------------------------- */
+		var passwd1Val = form.passwd1.value					// 해당 form에 userid라는 name인 곳의 value 값을 가져온다
+		if (passwd1Val.trim().length == 0){
+			alert("비밀번호는 필수입력사항입니다! 비밀번호를 입력하세요");
+			form.passwd1.value = "";
+			form.passwd1.focus();
+			return;
+		}
+		/* ------------------------------------------------- */
+		var passwd2Val = document.getElementById("passwd2").value;
+		
+		if (passwd2Val != passwd1Val) {
+			alert("비밀번호가 일치하지 않습니다. 다시입력하세요");
+			form.passwd1.value = "";
+			document.getElementById("passwd2").value = "";
+			form.passwd1.focus();
+			return;
+		}
+		/* ------------------------------------------------- */
+		var nameVal = form.name.value					
+		if (nameVal.trim().length == 0){
+			alert("이름는 필수입력사항입니다! 이름을 입력하세요");
+			form.nameVal.value = "";
+			form.nameVal.focus();
+			return;
+		}
+		/* ------------------------------------------------- */
+		var emailVal = form.email.value					
+		if (emailVal.trim().length == 0){
+			alert("이메일는 필수입력사항입니다! 이메일를 입력하세요");
+			form.emailVal.value = "";
+			form.emailVal.focus();
+			return;
+		}
+		/* ------------------------------------------------- */
+		var flag = false;
+		var arrGender = form.gender;
+		for (var i=0; i<arrGender.length; i++){
+			flag = arrGender[i].checked;
+			if (flag){
+				break;
+			}
+		}
+		if (!flag) {
+			alert("성별을 선택하세요");
+			return;
+		}
+		/* ------------------------------------------------- */
+		var arrHobby = form.hobby;
+		var cnt = 0;
+		for (var i=0; i<arrHobby.length; i++){
+			if (arrHobby[i].checked){
+				cnt += 1;
+			}
+		}
+		if (cnt < 2){
+			alert("취미는 2개 이상 선택하세요");
+			return;
+		}
+		/* ------------------------------------------------- */
+		var birthYear = document.getElementById("birthYear").value;
+		if (birthYear == "출생년도"){
+			alert("출생년도를 선택하세요");
+			return;
+		}
+		/* ------------------------------------------------- */
+		var school = document.getElementById("school").value;
+		if (school == "학력선택") {
+			alert("학력을 선택하세요");
+			return;
+		}
+		/* ------------------------------------------------- */
+		var registerCommentVal = form.registerComment.value;
+		
+		if (registerCommentVal.trim() == ""){
+			alert("가입인사를 입력하세요");
+			form.registerComment.value = "";
+			 form.registerComment.focus();
+			return;
+		}
+		
+		form.action = "register.do";
+		form.method = "post";			
+		form.submit();					// 전송
+		<!-- 
+	       form 태그에서 사용하는  method 는 2가지가 있는데 get 과 post 가 있다.
+	       get 은 전송하고자 하는 데이터를 웹브라우저 주소창에 실어서 보내는 방식이고,
+	       post 는 전송하고자 하는 데이터를 본문속에 감추어서 보내는 방식이다.
+	       그래서 get 은 보안성이 떨어지는 반면에 속도는 post 보다 빠르다.
+	       post는 보안성은 좋지만 속도는 get 보다는 느린편이다.
+	       그러므로 외부에 공개해서는 안되는 작업인 회원가입, 물품구매, 회원수정 등 DML(insert, update, delete)작업은 
+	       일반적으로 post 방식으로 하고, 
+	       외부에 공개하더라도 전혀 무관한 데이터 검색(예: 물품조회, 게시판글 검색)인 select 작업은
+	       일반적으로 get 방식으로 한다.
+	       method 를 기재하지 않으면 get 방식이다. 
+	   --> 
+	}
 </script>
 
 </head>
@@ -114,7 +222,7 @@
 <body>
 	<div id="container">
 		
-		<form action="register.do">
+		<form name="registerForm">
 			
 		<fieldset>
 			<legend>회원가입 정보</legend>
@@ -122,11 +230,11 @@
 			<ul style="list-style-type: none">
 				<li>
 					<label for="userid" class="title">아이디</label>
-					<input type="text" id="userid" class="myinput" size="20" maxlength="20" autofocus required/>
+					<input type="text" name="userid" id="userid" class="myinput" size="20" maxlength="20" autofocus required/>
 				</li>
 				<li>
 					<label for="passwd1" class="title">암호</label>
-					<input type="password" id="passwd1" class="myinput" size="20" maxlength="20" autofocus required/>
+					<input type="password" name="passwd1" id="passwd1" class="myinput" size="20" maxlength="20" autofocus required/>
 				</li>
 				<li>
 					<label for="passwd2" class="title">암호확인</label>
@@ -134,16 +242,16 @@
 				</li>
 				<li>
 					<label for="name" class="title">성명</label>
-					<input type="text" id="name" class="myinput" size="20" maxlength="20" autofocus required/>
+					<input type="text" name="name" id="name" class="myinput" size="20" maxlength="20" autofocus required/>
 				</li>
 				<li>
 					<label for="email" class="title">이메일</label>
-					<input type="email" id="email" class="myinput" size="20" maxlength="40" autofocus required placeholder="예: abc@naver.com" />
+					<input type="email" name="email" id="email" class="myinput" size="20" maxlength="40" autofocus required placeholder="예: abc@naver.com" />
 				</li>
 				<li>
 					<label class="title">성별</label>
 					<label for="male">남자</label>
-					<input type="radio" name="gender" id="male" value="1" checked/>
+					<input type="radio" name="gender" id="male" value="1"/>
 					<label for="female">여자</label>
 					<input type="radio" name="gender" id="female" value="2"/>
 				</li>
@@ -168,11 +276,12 @@
 				
 				<li>
 					<label class="title">최종학력</label>
-					<select class="myselect">
-						<option value="1">고졸</option>
-						<option value="2" selected>초대졸</option>
-						<option value="3">대졸</option>
-						<option value="4">대학원졸</option> 
+					<select class="myselect" id="school">
+						<option>학력선택</option>
+						<option value="2">고졸</option>
+						<option value="3">초대졸</option>
+						<option value="4">대졸</option>
+						<option value="5">대학원졸</option> 
 					</select>
 				</li>
 				
@@ -185,7 +294,7 @@
 					<textarea rows="5" cols="30" id="registerComment"></textarea>
 				</li>
 				<li>
-					<input type="submit" class="btn" value="확인"/>
+					<input type="button" class="btn" value="확인" onclick="goSubmit()" />
 					<input type="reset" class="btn" value="취소"/>		
 				</li>
 			</ul>
